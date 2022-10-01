@@ -18,6 +18,8 @@ endif
 endif
 endif
 
+FORUTILSPATH = /Users/boris/Work/CLASS-SZ/SO-SZ/forutils
+
 ifeq ($(FORUTILSPATH),)
 $(error Use  git clone --recurse-submodules, install forutils from https://github.com/cmbant/forutils, or set FORUTILSPATH variable)
 endif
@@ -29,7 +31,7 @@ NONNATIVE = 1
 endif
 
 #Will detect ifort/gfortran or edit for your compiler
-ifneq ($(COMPILER),gfortran)
+ifneq ($(COMPILER),gfortran-6)
 ifortErr = $(shell which ifort >/dev/null 2>&1; echo $$?)
 else
 ifortErr = 1
@@ -89,8 +91,8 @@ gfortErr = $(shell which gfortran >/dev/null; echo $$?)
 ifeq "$(gfortErr)" "0"
 #Gfortran compiler (version 6+):
 compiler_ver = $(shell gfortran -dumpversion 2>&1)
-COMPILER = gfortran
-F90C     = gfortran
+COMPILER = gfortran-6
+F90C     = gfortran-6
 COMMON_FFLAGS = -MMD -cpp -ffree-line-length-none -fmax-errors=4 -fopenmp
 # Using -ffast-math causes differences between Debug and Release configurations.
 FFLAGS = -O3 $(COMMON_FFLAGS)

@@ -42,7 +42,7 @@ def find_version():
 
 
 def get_forutils():
-    fpath = os.getenv('FORUTILSPATH')
+    fpath = '/Users/boris/Work/CLASS-SZ/SO-SZ/forutils'#os.getenv('FORUTILSPATH')
 
     def git_install_forutils():
         try:
@@ -113,7 +113,7 @@ def make_library(cluster=False):
         if ok and '8.2.0' in gfortran_version:
             print('WARNING: gfortran 8.2.0 may be buggy and give unreliable results or crashes, upgrade gfortran.')
     if _compile.is_windows:
-        COMPILER = "gfortran"
+        COMPILER = "gfortran-6"
         FFLAGS = "-shared -static -cpp -fopenmp -O3 -fmax-errors=4"
         # FFLAGS = "-shared -static -cpp -fopenmp -g -fbacktrace -ffpe-trap=invalid,overflow,zero " \
         #         "-fbounds-check -fmax-errors=4"
